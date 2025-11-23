@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy RolePlay Сайт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a0a0a, #3a1010, #5a1515);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(188, 20, 20, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 0, 0, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: background-shift 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes background-shift {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+        
+        .container {
+            background: linear-gradient(145deg, rgba(40, 10, 10, 0.9), rgba(60, 15, 15, 0.9));
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 
+                0 0 30px rgba(188, 20, 20, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(120, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, rgba(188, 20, 20, 0.1), rgba(139, 0, 0, 0.1), rgba(120, 0, 0, 0.1));
+            z-index: -1;
+            border-radius: 25px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 20px rgba(188, 20, 20, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(188, 20, 20, 0.6), 0 0 40px rgba(139, 0, 0, 0.3);
+            }
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8B0000, #BC1414, #8B0000);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 
+                0 0 20px rgba(188, 20, 20, 0.7),
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
+            position: relative;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(188, 20, 20, 0.7);
+            }
+            100% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(188, 20, 20, 0.9);
+            }
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            z-index: -1;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            color: white;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            animation: text-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes text-glow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+        }
+        
+        .subtitle {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            animation: subtitle-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes subtitle-glow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 165, 0, 0.4);
+            }
+        }
+        
+        .server-info {
+            background: linear-gradient(to right, rgba(60, 15, 15, 0.8), rgba(80, 20, 20, 0.8));
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #BC1414;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: server-info-glow 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes server-info-glow {
+            0% {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            100% {
+                box-shadow: 0 5px 20px rgba(188, 20, 20, 0.5);
+            }
+        }
+        
+        .server-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+        
+        .server-info:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .server-info p {
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .ip-address {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: white;
+            background: linear-gradient(to right, rgba(80, 20, 20, 0.7), rgba(100, 25, 25, 0.7));
+            padding: 12px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(188, 20, 20, 0.5);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(188, 20, 20, 0.3);
+            animation: ip-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes ip-glow {
+            0% {
+                box-shadow: 0 0 10px rgba(188, 20, 20, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(188, 20, 20, 0.6), 0 0 30px rgba(139, 0, 0, 0.4);
+            }
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .btn {
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            animation: btn-flow 3s ease-in-out infinite;
+        }
+        
+        @keyframes btn-flow {
+            0% {
+                background: linear-gradient(45deg, #8B0000, #BC1414, #8B0000);
+                box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+            }
+            25% {
+                background: linear-gradient(45deg, #BC1414, #8B0000, #BC1414);
+                box-shadow: 0 5px 20px rgba(188, 20, 20, 0.6);
+            }
+            50% {
+                background: linear-gradient(45deg, #9B0000, #CC2424, #9B0000);
+                box-shadow: 0 5px 18px rgba(155, 0, 0, 0.5);
+            }
+            75% {
+                background: linear-gradient(45deg, #CC2424, #9B0000, #CC2424);
+                box-shadow: 0 5px 22px rgba(204, 36, 36, 0.7);
+            }
+            100% {
+                background: linear-gradient(45deg, #8B0000, #BC1414, #8B0000);
+                box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+            }
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            animation-play-state: paused;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-telegram {
+            animation: telegram-flow 3s ease-in-out infinite;
+        }
+        
+        @keyframes telegram-flow {
+            0% {
+                background: linear-gradient(45deg, #229ED9, #2AABEE, #229ED9);
+                box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
+            }
+            25% {
+                background: linear-gradient(45deg, #2AABEE, #229ED9, #2AABEE);
+                box-shadow: 0 5px 20px rgba(42, 171, 238, 0.6);
+            }
+            50% {
+                background: linear-gradient(45deg, #1E8FC6, #32AEE9, #1E8FC6);
+                box-shadow: 0 5px 18px rgba(30, 143, 198, 0.5);
+            }
+            75% {
+                background: linear-gradient(45deg, #32AEE9, #1E8FC6, #32AEE9);
+                box-shadow: 0 5px 22px rgba(50, 174, 233, 0.7);
+            }
+            100% {
+                background: linear-gradient(45deg, #229ED9, #2AABEE, #229ED9);
+                box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
+            }
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(188, 20, 20, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: decoration-float 8s ease-in-out infinite alternate;
+        }
+        
+        @keyframes decoration-float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(20px, -20px) scale(1.2);
+            }
+            100% {
+                transform: translate(-20px, 20px) scale(0.8);
+            }
+        }
+        
+        .decoration:nth-child(1) {
+            top: -30px;
+            left: -30px;
+        }
+        
+        .decoration:nth-child(2) {
+            bottom: -40px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            animation-delay: 2s;
+        }
+        
+        .decoration:nth-child(3) {
+            top: 50%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 1s;
+        }
+        
+        .decoration:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 3s;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .ip-address {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+    
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo">RP</div>
+        </div>
+        
+        <h1>Legacy RolePlay</h1>
+        <div class="subtitle">Официальный сайт сервера</div>
+        
+        <div class="server-info">
+            <p>IP-адрес сервера:</p>
+            <div class="ip-address" id="ip-address">188.127.241.74:2504</div>
+        </div>
+        
+        <div class="btn-container">
+            <button class="btn" id="copy-btn">
+                <i class="fas fa-copy"></i> Скопировать IP
+            </button>
+            <a href="https://t.me/LRPtgc" target="_blank" class="btn btn-telegram" id="subscribe-btn">
+                <i class="fab fa-telegram"></i> Подпишись в соцсетях
+            </a>
+        </div>
+        
+        <p style="margin-top: 20px; color: white; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);">Скопируйте IP и введите его в нашем <strong>лаунчере</strong></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyBtn = document.getElementById('copy-btn');
+            const ipAddress = '188.127.241.74:2504';
+            
+            // Копирование IP в буфер обмена
+            copyBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(ipAddress)
+                    .then(() => {
+                        // Визуальная обратная связь при копировании
+                        const originalAnimation = copyBtn.style.animation;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> IP скопирован!';
+                        copyBtn.style.animation = 'none';
+                        copyBtn.style.background = 'linear-gradient(to bottom, #2ecc71, #27ae60)';
+                        
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Скопировать IP';
+                            copyBtn.style.animation = originalAnimation;
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Ошибка копирования: ', err);
+                        const originalAnimation = copyBtn.style.animation;
+                        copyBtn.innerHTML = '<i class="fas fa-times"></i> Ошибка копирования';
+                        copyBtn.style.animation = 'none';
+                        copyBtn.style.background = 'linear-gradient(to bottom, #e74c3c, #c0392b)';
+                        
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Скопировать IP';
+                            copyBtn.style.animation = originalAnimation;
+                        }, 2000);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
