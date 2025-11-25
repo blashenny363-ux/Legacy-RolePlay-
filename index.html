@@ -3,28 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legacy RolePlay Сайт</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Legacy RolePlay - Официальный сайт</title>
     <style>
+        /* Темная тема */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #151515;
+            --bg-card-hover: #1a1a1a;
+            --accent-red: #e63946;
+            --accent-red-dark: #c1121f;
+            --accent-red-light: #ff6b6b;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #777777;
+            --glow-red: 0 0 15px rgba(230, 57, 70, 0.7);
+            --glow-strong: 0 0 25px rgba(230, 57, 70, 0.9);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a0a0a, #3a1010, #5a1515);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(230, 57, 70, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(230, 57, 70, 0.05) 0%, transparent 20%);
         }
         
-        body::before {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Главный экран */
+        .landingContainer {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .landingContainer:before {
             content: '';
             position: absolute;
             top: 0;
@@ -32,441 +64,423 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(188, 20, 20, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 0, 0, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(193, 18, 31, 0.1) 0%, transparent 50%);
             z-index: -1;
-            animation: background-shift 10s ease-in-out infinite alternate;
         }
         
-        @keyframes background-shift {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
-        }
-        
-        .container {
-            background: linear-gradient(145deg, rgba(40, 10, 10, 0.9), rgba(60, 15, 15, 0.9));
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 
-                0 0 30px rgba(188, 20, 20, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            text-align: center;
-            position: relative;
-            border: 1px solid rgba(120, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            overflow: hidden;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, rgba(188, 20, 20, 0.1), rgba(139, 0, 0, 0.1), rgba(120, 0, 0, 0.1));
-            z-index: -1;
-            border-radius: 25px;
+        .landingContainer h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-red-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--glow-red);
             animation: glow 3s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
-            0% {
-                box-shadow: 0 0 20px rgba(188, 20, 20, 0.3);
+            from {
+                text-shadow: 0 0 5px rgba(230, 57, 70, 0.5);
             }
-            100% {
-                box-shadow: 0 0 30px rgba(188, 20, 20, 0.6), 0 0 40px rgba(139, 0, 0, 0.3);
+            to {
+                text-shadow: 0 0 20px rgba(230, 57, 70, 0.8), 0 0 30px rgba(255, 107, 107, 0.6);
             }
         }
         
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+        .landingContainer p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
         
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #8B0000, #BC1414, #8B0000);
-            border-radius: 50%;
+        .landingContainer .cta-buttons {
+            margin-top: 3rem;
             display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            font-weight: bold;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
             color: white;
-            box-shadow: 
-                0 0 20px rgba(188, 20, 20, 0.7),
-                inset 0 0 10px rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
             position: relative;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            animation: pulse 2s infinite alternate;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(188, 20, 20, 0.7);
-            }
-            100% {
-                transform: scale(1.05);
-                box-shadow: 0 0 30px rgba(188, 20, 20, 0.9);
-            }
-        }
-        
-        .logo::after {
+        .cta-button:before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-red-dark), var(--accent-red));
+            transition: width 0.4s ease;
             z-index: -1;
         }
         
-        h1 {
-            margin-bottom: 10px;
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.5), var(--glow-strong);
+        }
+        
+        .cta-button:hover:before {
+            width: 100%;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--accent-red);
             color: white;
-            font-size: 2.2rem;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            letter-spacing: 1px;
-            animation: text-glow 2s ease-in-out infinite alternate;
         }
         
-        @keyframes text-glow {
-            0% {
-                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            }
-            100% {
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
-            }
-        }
-        
-        .subtitle {
+        /* Красная кнопка Telegram */
+        .telegram-button-red {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
             color: white;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-            animation: subtitle-glow 3s ease-in-out infinite alternate;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            margin-top: 20px;
         }
         
-        @keyframes subtitle-glow {
-            0% {
-                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-            }
-            100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 165, 0, 0.4);
-            }
+        .telegram-button-red:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
+            background: linear-gradient(135deg, var(--accent-red-light), var(--accent-red));
         }
         
-        .server-info {
-            background: linear-gradient(to right, rgba(60, 15, 15, 0.8), rgba(80, 20, 20, 0.8));
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #BC1414;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .telegram-button-red:before {
+            content: "📢";
+            font-size: 1.2rem;
+        }
+        
+        /* Секция "Как начать играть" */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-red-light));
+            border-radius: 2px;
+            box-shadow: var(--glow-red);
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 5rem;
+        }
+        
+        .step-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            animation: server-info-glow 4s ease-in-out infinite alternate;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        @keyframes server-info-glow {
-            0% {
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            }
-            100% {
-                box-shadow: 0 5px 20px rgba(188, 20, 20, 0.5);
-            }
-        }
-        
-        .server-info::before {
+        .step-card:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-red-light));
         }
         
-        .server-info:hover::before {
-            transform: translateX(100%);
+        .step-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), var(--glow-red);
         }
         
-        .server-info p {
-            margin-bottom: 10px;
-            color: white;
-            font-weight: 500;
-        }
-        
-        .ip-address {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 15px 0;
-            color: white;
-            background: linear-gradient(to right, rgba(80, 20, 20, 0.7), rgba(100, 25, 25, 0.7));
-            padding: 12px;
-            border-radius: 8px;
-            letter-spacing: 1px;
-            border: 1px solid rgba(188, 20, 20, 0.5);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(188, 20, 20, 0.3);
-            animation: ip-glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes ip-glow {
-            0% {
-                box-shadow: 0 0 10px rgba(188, 20, 20, 0.3);
-            }
-            100% {
-                box-shadow: 0 0 20px rgba(188, 20, 20, 0.6), 0 0 30px rgba(139, 0, 0, 0.4);
-            }
-        }
-        
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 25px 0;
-        }
-        
-        .btn {
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: flex;
+        .step-number {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-            animation: btn-flow 3s ease-in-out infinite;
-        }
-        
-        @keyframes btn-flow {
-            0% {
-                background: linear-gradient(45deg, #8B0000, #BC1414, #8B0000);
-                box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
-            }
-            25% {
-                background: linear-gradient(45deg, #BC1414, #8B0000, #BC1414);
-                box-shadow: 0 5px 20px rgba(188, 20, 20, 0.6);
-            }
-            50% {
-                background: linear-gradient(45deg, #9B0000, #CC2424, #9B0000);
-                box-shadow: 0 5px 18px rgba(155, 0, 0, 0.5);
-            }
-            75% {
-                background: linear-gradient(45deg, #CC2424, #9B0000, #CC2424);
-                box-shadow: 0 5px 22px rgba(204, 36, 36, 0.7);
-            }
-            100% {
-                background: linear-gradient(45deg, #8B0000, #BC1414, #8B0000);
-                box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
-            }
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            animation-play-state: paused;
-        }
-        
-        .btn:active {
-            transform: translateY(1px);
-        }
-        
-        .btn-telegram {
-            animation: telegram-flow 3s ease-in-out infinite;
-        }
-        
-        @keyframes telegram-flow {
-            0% {
-                background: linear-gradient(45deg, #229ED9, #2AABEE, #229ED9);
-                box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
-            }
-            25% {
-                background: linear-gradient(45deg, #2AABEE, #229ED9, #2AABEE);
-                box-shadow: 0 5px 20px rgba(42, 171, 238, 0.6);
-            }
-            50% {
-                background: linear-gradient(45deg, #1E8FC6, #32AEE9, #1E8FC6);
-                box-shadow: 0 5px 18px rgba(30, 143, 198, 0.5);
-            }
-            75% {
-                background: linear-gradient(45deg, #32AEE9, #1E8FC6, #32AEE9);
-                box-shadow: 0 5px 22px rgba(50, 174, 233, 0.7);
-            }
-            100% {
-                background: linear-gradient(45deg, #229ED9, #2AABEE, #229ED9);
-                box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
-            }
-        }
-        
-        .decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(188, 20, 20, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: decoration-float 8s ease-in-out infinite alternate;
-        }
-        
-        @keyframes decoration-float {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(20px, -20px) scale(1.2);
-            }
-            100% {
-                transform: translate(-20px, 20px) scale(0.8);
-            }
-        }
-        
-        .decoration:nth-child(1) {
-            top: -30px;
-            left: -30px;
-        }
-        
-        .decoration:nth-child(2) {
-            bottom: -40px;
-            right: -30px;
-            width: 120px;
-            height: 120px;
-            animation-delay: 2s;
-        }
-        
-        .decoration:nth-child(3) {
-            top: 50%;
-            left: 10%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 1s;
-        }
-        
-        .decoration:nth-child(4) {
-            bottom: 30%;
-            right: 10%;
             width: 60px;
             height: 60px;
-            animation-delay: 3s;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-red-dark));
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .step-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .step-card .step-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--accent-red-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+        
+        .step-card .step-button:hover {
+            background: var(--accent-red);
+            color: white;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-red-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-logo p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-red-light);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .landingContainer h1 {
+                font-size: 3rem;
+            }
+            
+            .landingContainer p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-card {
+                padding: 2rem 1.5rem;
+            }
         }
         
         @media (max-width: 480px) {
-            .container {
-                padding: 20px;
+            .landingContainer h1 {
+                font-size: 2.5rem;
             }
             
-            h1 {
-                font-size: 1.8rem;
+            .landingContainer {
+                padding: 40px 15px;
             }
             
-            .ip-address {
-                font-size: 1.2rem;
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .cta-button {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="decoration"></div>
-    <div class="decoration"></div>
-    <div class="decoration"></div>
-    <div class="decoration"></div>
+    <div class="landingContainer">
+        <div class="container">
+            <h1>Legacy RolePlay</h1>
+            <p>Legacy RolePlay — это уникальный ролевой проект в мире GTA San Andreas, где каждый игрок может создать своего персонажа и погрузиться в жизнь виртуального мегаполиса.</p>
+            <p>Реалистичная экономика, глубокая система персонажей и постоянное развитие мира — всё это ждёт вас в Legacy RolePlay.</p>
+            <p>Выбери свою роль и стань частью легенды!</p>
+            <div class="cta-buttons">
+                <a href="https://t.me/LRPtgc" target="_blank" class="cta-button">Скачать лаунчер</a>
+                <a href="#" class="cta-button secondary">Узнать больше</a>
+            </div>
+        </div>
+    </div>
     
     <div class="container">
-        <div class="logo-container">
-            <div class="logo">RP</div>
+        <div class="section-title">
+            <h2>Как начать играть</h2>
         </div>
         
-        <h1>Legacy RolePlay</h1>
-        <div class="subtitle">Официальный сайт сервера</div>
-        
-        <div class="server-info">
-            <p>IP-адрес сервера:</p>
-            <div class="ip-address" id="ip-address">188.127.241.74:2504</div>
-        </div>
-        
-        <div class="btn-container">
-            <button class="btn" id="copy-btn">
-                <i class="fas fa-copy"></i> Скопировать IP
-            </button>
-            <a href="https://t.me/LRPtgc" target="_blank" class="btn btn-telegram" id="subscribe-btn">
-                <i class="fab fa-telegram"></i> Подпишись в соцсетях
-            </a>
-        </div>
-        
-        <p style="margin-top: 20px; color: white; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);">Скопируйте IP и введите его в нашем <strong>лаунчере</strong></p>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const copyBtn = document.getElementById('copy-btn');
-            const ipAddress = '188.127.241.74:2504';
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <h3>Скачать лаунчер</h3>
+                <p>Скачайте и установите Legacy RolePlay Launcher на свой телефон. Лаунчер автоматически установит все необходимые файлы для игры.</p>
+                <a href="https://t.me/LRPtgc" target="_blank" class="step-button">Скачать</a>
+            </div>
             
-            // Копирование IP в буфер обмена
-            copyBtn.addEventListener('click', function() {
-                navigator.clipboard.writeText(ipAddress)
-                    .then(() => {
-                        // Визуальная обратная связь при копировании
-                        const originalAnimation = copyBtn.style.animation;
-                        copyBtn.innerHTML = '<i class="fas fa-check"></i> IP скопирован!';
-                        copyBtn.style.animation = 'none';
-                        copyBtn.style.background = 'linear-gradient(to bottom, #2ecc71, #27ae60)';
-                        
-                        setTimeout(() => {
-                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Скопировать IP';
-                            copyBtn.style.animation = originalAnimation;
-                        }, 2000);
-                    })
-                    .catch(err => {
-                        console.error('Ошибка копирования: ', err);
-                        const originalAnimation = copyBtn.style.animation;
-                        copyBtn.innerHTML = '<i class="fas fa-times"></i> Ошибка копирования';
-                        copyBtn.style.animation = 'none';
-                        copyBtn.style.background = 'linear-gradient(to bottom, #e74c3c, #c0392b)';
-                        
-                        setTimeout(() => {
-                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Скопировать IP';
-                            copyBtn.style.animation = originalAnimation;
-                        }, 2000);
-                    });
-            });
-        });
-    </script>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <h3>Регистрация</h3>
+                <p>Зарегистрируйте аккаунт прямо в лаунчере. Вам потребуется придумать уникальное имя для вашего персонажа в формате Имя_Фамилия.</p>
+                <a href="https://t.me/LRPtgc" target="_blank" class="step-button">Скачать</a>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <h3>Начать играть</h3>
+                <p>После завершения установки и регистрации нажмите кнопку "Играть" в лаунчере и погрузитесь в мир Legacy RolePlay!</p>
+                <a href="https://t.me/LRPtgc" target="_blank" class="step-button">Скачать</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Legacy RolePlay</h3>
+                    <p>Уникальный ролевой проект в мире GTA San Andreas с глубокой системой персонажей и реалистичной экономикой.</p>
+                    <a href="https://t.me/LRPtgc" target="_blank" class="telegram-button-red">Наш Telegram канал</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Как начать играть</a></li>
+                        <li><a href="#">Карта</a></li>
+                        <li><a href="#">Магазин</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="#">Правила</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Поддержка</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Правовая информация</h4>
+                    <ul>
+                        <li><a href="#">Пользовательское соглашение</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Публичная оферта</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Legacy RolePlay. Все права защищены.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
